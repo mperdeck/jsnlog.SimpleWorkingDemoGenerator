@@ -9,6 +9,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Initialise JSNLog demo project</description>
     <copyright>Copyright 2016</copyright>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+      </group>
+    </dependencies>
   </metadata>
   <files>
     <file src="Controllers\*"     target="Controllers\" />
