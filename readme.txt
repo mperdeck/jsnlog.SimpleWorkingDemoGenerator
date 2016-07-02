@@ -9,6 +9,7 @@ structure
 ==================================
 Adding a new demo
 
+-------------------
 1) Create empty project
 
 Open 
@@ -36,8 +37,12 @@ MVC
 
 Save All to save the solution file, and the new project.
 
+-------------------
 2) Add basic files
 
+Make sure this is one of the nuget package sources:
+C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\InitPackages\GeneratedPackages
 
+install-package initproject
 
 
