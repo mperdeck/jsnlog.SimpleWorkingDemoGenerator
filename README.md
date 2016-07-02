@@ -1,2 +1,7 @@
 # jsnlog.SimpleWorkingDemoGenerator
-Generates simple working demos solution
+
+Private tooling to generate the simple working demos. 
+
+Not meant for public use.
+
+
