@@ -22,7 +22,9 @@ rem Copy .git dir back in
 mkdir jsnlogSimpleWorkingDemos\.git
 xcopy /s /e /q /h /y %temp%\simple\.git jsnlogSimpleWorkingDemos\.git\*.*
 
-
+rem Start Visual Studio
+rem devenv lives in C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE
+devenv C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos.sln
 
 
 
