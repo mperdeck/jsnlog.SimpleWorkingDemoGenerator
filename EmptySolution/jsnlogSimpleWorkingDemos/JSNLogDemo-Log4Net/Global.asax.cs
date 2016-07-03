@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace SimpleLog4Net
+namespace JSNLogDemo_Log4Net
 {
     public class MvcApplication : System.Web.HttpApplication
     {

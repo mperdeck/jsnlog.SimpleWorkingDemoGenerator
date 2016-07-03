@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SimpleLog4Net")]
+[assembly: AssemblyTitle("JSNLogDemo_Log4Net")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SimpleLog4Net")]
+[assembly: AssemblyProduct("JSNLogDemo_Log4Net")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5b125592-f4c6-496e-84bb-95c8babc6cae")]
+[assembly: Guid("5b46d616-af66-40cf-b9e8-59d6426d732c")]
 
 // Version information for an assembly consists of the following four values:
 //

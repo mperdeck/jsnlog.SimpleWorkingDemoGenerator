@@ -37,26 +37,16 @@ MVC
 
 Save All to save the solution file, and the new project.
 
--------------------
-2) Add basic files
-
-Make sure this is one of the nuget package sources:
-C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\InitPackages\GeneratedPackages
-
-install-package initproject
-
-
-
 =================================
 To regenerate the demos repo
 
 1) Copy the empty solution over the demos. Run
 copy-empty-solution.bat
 
-2) In VS, open the demo solution:
+This also opens VS with the demos solution.
 C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos.sln
 
-3)
+2)
 In Package Manager Console, run:
 C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\Generate.ps1
 

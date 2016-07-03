@@ -1,13 +1,13 @@
 #
 # Generate.ps1
 #
-Write-Host "cccccccc" -BackgroundColor DarkBlue
 
-Install-Package jsnlog
+. "$PSScriptRoot\helpers\FileHelpers.ps1"
 
+# ------------------------------------------
+# JSNLogDemo-Log4Net
 
-
-C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\SimpleLog4Net\SimpleLog4Net.csproj
+CopyMainFiles "JSNLogDemo-Log4Net" "Log4Net"
 
 
 

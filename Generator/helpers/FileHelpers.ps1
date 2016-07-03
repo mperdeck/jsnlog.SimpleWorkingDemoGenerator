@@ -25,8 +25,17 @@ Function TemplateFilePath([string] $templateFileRelPath)
 Function TemplateFileContents([string] $templateFileRelPath)
 {
 	$path = TemplateFilePath $templateFileRelPath
+
+	Write-Host $path
+
 	$content = [IO.File]::ReadAllText($path)
 	Return $content
+}
+
+Function EnsureDirectoryExists([string] $path)
+{
+	$directory = Split-Path -Path $path
+	New-Item -ItemType Directory -Force -Path $directory
 }
 
 # Writes the given content to a file in a site (represented by a project).
@@ -35,7 +44,8 @@ Function TemplateFileContents([string] $templateFileRelPath)
 Function UpdateSiteFile([string] $content, [string] $projectName, [string] $siteFileRelPath)
 {
 	$path = SiteFilePath $projectName $siteFileRelPath
-	$content | Out-File $path
+	EnsureDirectoryExists $path
+	$content | Out-File -encoding ascii $path
 }
 
 # Adds a file to the .csproj of a project
@@ -55,7 +65,7 @@ Function AddFileToCSProj([string] $projectName, [string] $siteFileRelPath)
 
 	$csProjNewContent = $csProjContent.replace($marker, "$marker$newEntry")
 
-	$csProjNewContent | Out-File $csProjPath
+	$csProjNewContent | Out-File -encoding ascii $csProjPath
 }
 
 # Writes the given content to a file in a site (represented by a project).
@@ -92,14 +102,13 @@ Function ReplacePlaceholderByTemplateFile([string] $content, [string] $placeHold
 
 Function CopyMainFile([string] $projectName, [string] $logPackage, [string] $siteFileRelPath)
 {
-
-	$basePath = Join-Path "Base" $siteFileRelPath
+	$basePath = "Base\$siteFileRelPath"
 	$templateFileRelPath = TemplateFilePath $basePath
 	$content = TemplateFileContents $templateFileRelPath
 
 	$newContent = $content.replace("{{Project}}", $projectName)
 
-	$logPackagePath = Join-Path $logPackage $siteFileRelPath
+	$logPackagePath = "$logPackage\$siteFileRelPath"
 	$replacerTemplateFileRelPath = TemplateFilePath $basePath
 	$newContent2 = ReplacePlaceholderByTemplateFile $newContent "{{LoggingPackageSpecific}}" $replacerTemplateFileRelPath
 
