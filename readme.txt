@@ -21,7 +21,7 @@ Scaffold:
 ASP.NET Web Application
 
 Name:
-name of your demo project
+name of your demo project. Note that - is not allowed in the name. Use _
 
 location:
 C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\EmptySolution\jsnlogSimpleWorkingDemos
@@ -40,8 +40,12 @@ Save All to save the solution file, and the new project.
 =================================
 To regenerate the demos repo
 
+>>>> run publish.ps1 to generate the new jsnlog packages in 
+C:\Dev\@NuGet\GeneratedPackages
+
+
 1) Copy the empty solution over the demos. Run
-copy-empty-solution.bat
+C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\copy-empty-solution.bat
 
 This also opens VS with the demos solution.
 C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos.sln

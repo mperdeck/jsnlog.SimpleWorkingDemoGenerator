@@ -25,9 +25,6 @@ Function TemplateFilePath([string] $templateFileRelPath)
 Function TemplateFileContents([string] $templateFileRelPath)
 {
 	$path = TemplateFilePath $templateFileRelPath
-
-	Write-Host $path
-
 	$content = [IO.File]::ReadAllText($path)
 	Return $content
 }
@@ -103,13 +100,11 @@ Function ReplacePlaceholderByTemplateFile([string] $content, [string] $placeHold
 Function CopyMainFile([string] $projectName, [string] $logPackage, [string] $siteFileRelPath)
 {
 	$basePath = "Base\$siteFileRelPath"
-	$templateFileRelPath = TemplateFilePath $basePath
-	$content = TemplateFileContents $templateFileRelPath
+	$content = TemplateFileContents $basePath
 
 	$newContent = $content.replace("{{Project}}", $projectName)
 
-	$logPackagePath = "$logPackage\$siteFileRelPath"
-	$replacerTemplateFileRelPath = TemplateFilePath $basePath
+	$replacerTemplateFileRelPath = "$logPackage\$siteFileRelPath"
 	$newContent2 = ReplacePlaceholderByTemplateFile $newContent "{{LoggingPackageSpecific}}" $replacerTemplateFileRelPath
 
 	AddSiteFile $newContent2 $projectName $siteFileRelPath

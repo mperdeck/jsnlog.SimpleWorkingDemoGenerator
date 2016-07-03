@@ -5,10 +5,11 @@
 . "$PSScriptRoot\helpers\FileHelpers.ps1"
 
 # ------------------------------------------
-# JSNLogDemo-Log4Net
+# JSNLogDemo_Log4Net
 
-CopyMainFiles "JSNLogDemo-Log4Net" "Log4Net"
-
+CopyMainFiles "JSNLogDemo_Log4Net" "Log4Net"
+Install-Package log4net [-ProjectName <string>] [[-Source] <string>] 
+Install-Package JSNLog.Log4Net
 
 
 
