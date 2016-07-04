@@ -3,7 +3,7 @@
 #
 
 $TemplateRootDir = "C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\TemplateFiles"
-$ProjectsRootDir = "C:\Dev\JSNLog\jsnlogSimpleWorkingDemos"
+$ProjectsRootDir = "C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos"
 
 # Returns the absolute path of a file within a project
 Function SiteFilePath([string] $projectName, [string] $siteFileRelPath)
