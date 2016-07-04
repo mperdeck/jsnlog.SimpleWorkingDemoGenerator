@@ -1,2 +1,1 @@
-﻿log4net.Config.XmlConfigurator(Watch = true);
-
+﻿log4net.Config.XmlConfigurator.Configure();

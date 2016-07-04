@@ -40,7 +40,7 @@ Save All to save the solution file, and the new project.
 =================================
 To regenerate the demos repo
 
->>>> run publish.ps1 to generate the new jsnlog packages in 
+0) >>>> run publish.ps1 to generate the new jsnlog packages in 
 C:\Dev\@NuGet\GeneratedPackages
 
 
