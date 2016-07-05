@@ -1,1 +1,1 @@
-powershell.exe "& 'InitSolution.ps1'"
+powershell.exe "& 'C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\InitSolution.ps1'"

@@ -4,6 +4,7 @@
 
 $TemplateRootDir = "C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\TemplateFiles"
 $ProjectsRootDir = "C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos"
+$SolutionPath = "$ProjectsRootDir\jsnlogSimpleWorkingDemos.sln"
 $EmptySolutionRootDir = "C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\EmptySolution\jsnlogSimpleWorkingDemos"
 
 Function RemoveDirectory([string] $path)

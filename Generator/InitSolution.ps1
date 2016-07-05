@@ -23,3 +23,4 @@ foreach ($site in $Sites)
   CopyMainFiles $site.projectName $site.logPackage
 }
 
+cmd /c "devenv $SolutionPath"

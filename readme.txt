@@ -45,7 +45,7 @@ C:\Dev\@NuGet\GeneratedPackages
 
 1) Copy the empty solution over the demos. Run
 C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\InitSolution.bat
-InitSolution
+
 This also opens VS with the demos solution.
 C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos.sln
 
