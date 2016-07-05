@@ -30,6 +30,7 @@
     <Compile Include="Generate.ps1" />
     <Compile Include="helpers\FileHelpers.ps1" />
     <Compile Include="helpers\NugetHelpers.ps1" />
+    <Compile Include="InitSolution.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="helpers\" />

@@ -43,16 +43,15 @@ To regenerate the demos repo
 0) >>>> run publish.ps1 to generate the new jsnlog packages in 
 C:\Dev\@NuGet\GeneratedPackages
 
-
 1) Copy the empty solution over the demos. Run
-C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\copy-empty-solution.bat
-
+C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\InitSolution.bat
+InitSolution
 This also opens VS with the demos solution.
 C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos.sln
 
 2)
 In Package Manager Console, run:
-C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\Generate.ps1
+C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\InstallPackages.ps1
 
 
 

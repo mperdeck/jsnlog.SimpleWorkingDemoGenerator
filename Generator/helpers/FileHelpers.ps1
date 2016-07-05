@@ -4,6 +4,24 @@
 
 $TemplateRootDir = "C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\TemplateFiles"
 $ProjectsRootDir = "C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos"
+$EmptySolutionRootDir = "C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\EmptySolution\jsnlogSimpleWorkingDemos"
+
+Function RemoveDirectory([string] $path)
+{
+	cmd /c "rd /s /q $path"
+}
+
+Function CopyDirectory([string] $fromPath, [string] $toPath)
+{
+	if (Test-Path -path $toPath) { RemoveDirectory $toPath }
+	New-Item $toPath -itemtype directory -force
+	copy-item "$fromPath\*" $toPath -force -recurse -verbose
+}
+
+Function CopyEmptySolution()
+{
+	CopyDirectory $EmptySolutionRootDir $ProjectsRootDir
+}
 
 # Returns the absolute path of a file within a project
 Function SiteFilePath([string] $projectName, [string] $siteFileRelPath)
