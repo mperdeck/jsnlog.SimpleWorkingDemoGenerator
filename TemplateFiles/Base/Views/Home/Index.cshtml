@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>EmptySerilog</title>
+    <title>{{Project}}</title>
    @Html.Raw(JSNLog.JavascriptLogging.Configure())
 </head>
 <body>
@@ -42,10 +42,8 @@
 
 	// Log caught exception
 	try {
-		...
 		// ReferenceError: xyz is not defined
 		xyz;
-		...
 	} catch (e) {
 		// Log the exception
 		JL().fatalException("Something went wrong!", e);
