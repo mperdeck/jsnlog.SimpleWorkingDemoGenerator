@@ -116,7 +116,7 @@ Function ReplacePlaceholderByTemplateFile([string] $content, [string] $placeHold
 	Return $newContent
 }
 
-Function CopyMainFile([string] $projectName, [string] $logPackage, [string] $siteFileRelPath)
+Function CopyMainFile([string] $projectName, [string] $logPackage, [string] $siteFileRelPath, [string] $siteFileRelPathUsing)
 {
 	$basePath = "Base\$siteFileRelPath"
 	$content = TemplateFileContents $basePath
@@ -126,7 +126,10 @@ Function CopyMainFile([string] $projectName, [string] $logPackage, [string] $sit
 	$replacerTemplateFileRelPath = "$logPackage\$siteFileRelPath"
 	$newContent2 = ReplacePlaceholderByTemplateFile $newContent "{{LoggingPackageSpecific}}" $replacerTemplateFileRelPath
 
-	AddSiteFile $newContent2 $projectName $siteFileRelPath
+	$replacerTemplateFileRelPathUsing = "$logPackage\$siteFileRelPathUsing"
+	$newContent3 = ReplacePlaceholderByTemplateFile $newContent2 "{{LoggingPackageSpecificUsing}}" $replacerTemplateFileRelPathUsing
+
+	AddSiteFile $newContent3 $projectName $siteFileRelPath
 }
 
 # Copies the HomeController, Home/index.cstml, Global.asax and Web.config files
@@ -134,8 +137,8 @@ Function CopyMainFile([string] $projectName, [string] $logPackage, [string] $sit
 Function CopyMainFiles([string] $projectName, [string] $logPackage)
 {
 	CopyMainFile $projectName $logPackage "Views\Home\Index.cshtml"
-	CopyMainFile $projectName $logPackage "Global.asax.cs"
-	CopyMainFile $projectName $logPackage "Controllers\HomeController.cs"
+	CopyMainFile $projectName $logPackage "Global.asax.cs" "Global_Using.asax.cs"
+	CopyMainFile $projectName $logPackage "Controllers\HomeController.cs" "Controllers\HomeController_Using.cs"
 	CopyMainFile $projectName $logPackage "Web.config"
 }
 
