@@ -113,10 +113,12 @@ Function AddFileToCSProj([string] $projectName, [string] $siteFileRelPath)
 	$csProjPath = SiteFilePath $projectName "$projectName.csproj"
 	$csProjContent = [IO.File]::ReadAllText($csProjPath)
 
-	$newEntry = "<Content Include=""$siteFileRelPath"" />"
-	if ($siteFileRelPath.EndsWith(".cs"))
+	$cleanedPath = $siteFileRelPath.Trim("\"," ")
+
+	$newEntry = "<Content Include=""$cleanedPath"" />"
+	if ($cleanedPath.EndsWith(".cs"))
 	{
-		$newEntry = "<Compile Include=""$siteFileRelPath"" />"
+		$newEntry = "<Compile Include=""$cleanedPath"" />"
 	}
 
 	$csProjNewContent = $csProjContent.replace($marker, "$marker$newEntry")
@@ -258,14 +260,14 @@ Function ApplyFeatureToProject([string] $projectName, [string] $feature)
 	$featureDir = FeatureDirPath $feature
 
 	# First copy all normal files
-	get-childitem $featureDir -recurse -force | `
+	get-childitem $featureDir -File -recurse -force | `
 		?{($_.extension -ne ".value")} | `
 		ForEach-Object { ApplyFeatureFileToProject $projectName $feature $_.FullName }
 
 	# Then insert values at markers in the files.
 	# Take the file ....\xyz.cs\logger.value
 	# The value of this file will be inserted in ....\xyz.cs, below the {{{logger}}} marker.
-	get-childitem $featureDir -recurse -force | `
+	get-childitem $featureDir -File -recurse -force | `
 		?{($_.extension -eq ".value")} | `
 		ForEach-Object { ApplyFeatureValueFileToProject $projectName $feature $_.FullName }
 }
@@ -274,7 +276,7 @@ Function RemoveMarkersFromProject([string] $projectName)
 {
 	$projectDir = ProjectDirPath $projectName
 
-	get-childitem $projectDir -recurse -force | `
+	get-childitem $projectDir -File -recurse -force | `
 		?{($_.extension -eq ".cs") -or ($_.extension -eq ".cshtml") -or ($_.extension -eq ".config")} | `
 		ForEach-Object { RemoveMarkersFromFile $_.FullName }
 }
