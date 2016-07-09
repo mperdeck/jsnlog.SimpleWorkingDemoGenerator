@@ -20,7 +20,12 @@ CopyEmptySolution
 
 foreach ($site in $Sites)
 {
-  CopyMainFiles $site.projectName $site.logPackage
+	foreach ($feature in $site.features)
+	{
+		ApplyFeatureToProject $site.projectName $feature
+	}
+
+	RemoveMarkersFromProject $site.projectName
 }
 
 cmd /c "devenv $SolutionPath"
