@@ -14,7 +14,7 @@ namespace {{Project}}
         {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 			
-{{LoggingPackageSpecific}}
+			{{{LoggingPackageSpecific}}}
         }
     }
 }
