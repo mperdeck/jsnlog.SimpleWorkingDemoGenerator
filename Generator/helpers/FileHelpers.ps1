@@ -74,7 +74,7 @@ Function InsertValueInProjectFile([string] $value, [string] $markerName, [string
 	$content = [IO.File]::ReadAllText($projectFilePath)
 
 	$marker = ToMarker $markerName
-	$content = $content -replace $marker, "$marker`n$value"
+	$content = $content.replace($marker, "$marker`n$value")
 
 	$content | Out-File -encoding ascii $projectFilePath
 }
@@ -241,7 +241,7 @@ Function ApplyFeatureValueFileToProject([string] $projectName, [string] $feature
 	$markerName = [System.IO.Path]::GetFileNameWithoutExtension($featureValueFilePath)
 
 	$featureValueFileDir = Split-Path $featureValueFilePath
-	$projectFileRelPath = $featureValueFileDir -replace $featureDir
+	$projectFileRelPath = $featureValueFileDir.replace($featureDir, "")
 
 	InsertValueInProjectFile $value $markerName $projectName $projectFileRelPath
 }
