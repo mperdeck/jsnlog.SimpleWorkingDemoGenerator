@@ -215,7 +215,7 @@ Function CopyMainFiles([string] $projectName, [string] $logPackage)
 Function ApplyFeatureFileToProject([string] $projectName, [string] $feature, [string] $featureFilePath)
 {
 	$featureDir = FeatureDirPath $feature
-	$projectFileRelPath = $featureFilePath -replace $featureDir
+	$projectFileRelPath = $featureFilePath.replace($featureDir, "")
 
 	CopyFileToProject $featureFilePath $projectName $projectFileRelPath
 }
