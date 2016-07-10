@@ -1,0 +1,4 @@
+﻿	log4net.GlobalContext.Properties["requestId"] = 
+        JSNLog.JavascriptLogging.RequestId();
+    log4net.Config.XmlConfigurator.Configure();
+	

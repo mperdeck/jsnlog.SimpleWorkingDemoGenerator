@@ -13,5 +13,6 @@ $sites = @(
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_CORS"; loggingPackage="Log4Net"; features=@("CORS"); packages=@() },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_LoggingEventHandlers"; loggingPackage="Log4Net"; features=@("LoggingEventHandlers"); packages=@() },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_OWIN"; loggingPackage="Log4Net"; features=@("OWIN"); packages=@() },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_RequestIds"; loggingPackage="Log4Net"; features=@("RequestIds"); packages=@() },
 	[pscustomobject]@{projectName="JSNLogDemo_NLog"; loggingPackage="NLog"; features=@(); packages=@() }
 )
