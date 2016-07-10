@@ -26,6 +26,7 @@ foreach ($site in $Sites)
 		ApplyFeatureToProject $site.projectName $feature
 	}
 
+	ReplaceProjectMarkers $site.projectName
 	RemoveMarkersFromProject $site.projectName
 }
 

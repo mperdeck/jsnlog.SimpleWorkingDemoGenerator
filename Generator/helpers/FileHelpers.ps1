@@ -153,9 +153,7 @@ Function CopyFileToProject([string] $absoluteSourcePath, [string] $projectName, 
 		AddFileToCSProj $projectName $projectFileRelPath
 	}
 
-	$content = [IO.File]::ReadAllText($absoluteSourcePath)
-	$newContent = $content.replace("{{{Project}}}", $projectName)
-	$newContent | Out-File -encoding ascii $absoluteProjectFilePath
+	Copy-Item $absoluteSourcePath $absoluteProjectFilePath
 }
 
 # In $content, replaces a place holder by the contents of a template file.
@@ -254,6 +252,13 @@ Function RemoveMarkersFromFile([string] $path)
 	RemoveRegexInFile $regex $path
 }
 
+Function ReplaceProjectMarkersInFile([string] $path, [string] $projectName)
+{
+	$content = [IO.File]::ReadAllText($path)
+	$newContent = $content.replace("{{{Project}}}", $projectName)
+	$newContent | Out-File -encoding ascii $path
+}
+
 Function ApplyFeatureToProject([string] $projectName, [string] $feature)
 {
 	# A feature directory is a directory for a feature that sits under the template dir.
@@ -279,5 +284,14 @@ Function RemoveMarkersFromProject([string] $projectName)
 	get-childitem $projectDir -File -recurse -force | `
 		?{($_.extension -eq ".cs") -or ($_.extension -eq ".cshtml") -or ($_.extension -eq ".config")} | `
 		ForEach-Object { RemoveMarkersFromFile $_.FullName }
+}
+	
+Function ReplaceProjectMarkers([string] $projectName)
+{
+	$projectDir = ProjectDirPath $projectName
+
+	get-childitem $projectDir -File -recurse -force | `
+		?{($_.extension -eq ".cs") -or ($_.extension -eq ".cshtml") -or ($_.extension -eq ".config")} | `
+		ForEach-Object { ReplaceProjectMarkersInFile $projectName $_.FullName }
 }
 
