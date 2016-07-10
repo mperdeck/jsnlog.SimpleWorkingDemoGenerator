@@ -4,23 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-{{{Using}}}
 
-namespace {{{Project}}}
+namespace JSNLogDemo_Serilog_MongoDB
 {
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
+            AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-			
-			{{{Start}}}
-        }
-
-        protected void Application_BeginRequest()
-        {
-			{{{BeginRequest}}}
-			{{{BeginRequest_Log4Net}}}
         }
     }
 }

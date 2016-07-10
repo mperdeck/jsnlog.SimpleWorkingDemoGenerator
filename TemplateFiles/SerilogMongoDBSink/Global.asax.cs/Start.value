@@ -1,0 +1,9 @@
+﻿
+// -----------------
+
+var log = new LoggerConfiguration()
+				.WriteTo.MongoDB("mongodb://localhost/logs", period: TimeSpan.Zero)
+				.WriteTo.Sink(new FileSink(logFilePath, new RawFormatter(), null))
+				.CreateLogger();
+
+Log.Logger = log;

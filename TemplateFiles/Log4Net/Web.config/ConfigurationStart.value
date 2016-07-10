@@ -9,7 +9,7 @@
       <file value="Logs\weblog.txt" />
       <appendToFile value="true" />
       <layout type="log4net.Layout.PatternLayout">
-        <conversionPattern value="{{{ConversionPatternStart}}}%utcdate | %level | %logger | %message%newline" />
+        <conversionPattern value="{{{ConversionPatternStart_Log4Net}}}%utcdate | %level | %logger | %message%newline" />
       </layout>
     </appender>
     <root>

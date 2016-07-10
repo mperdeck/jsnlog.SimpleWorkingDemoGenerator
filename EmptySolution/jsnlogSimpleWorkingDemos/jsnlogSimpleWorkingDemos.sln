@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSNLogDemo_Log4Net_OWIN", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSNLogDemo_Log4Net_RequestIds", "JSNLogDemo_Log4Net_RequestIds\JSNLogDemo_Log4Net_RequestIds.csproj", "{2A9E41D5-3D9D-4130-968B-409E8A1D91D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSNLogDemo_Serilog_MongoDB", "JSNLogDemo_Serilog_MongoDB\JSNLogDemo_Serilog_MongoDB.csproj", "{6FD5B9D5-92D6-4961-87B8-041C6F8AF31F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{2A9E41D5-3D9D-4130-968B-409E8A1D91D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A9E41D5-3D9D-4130-968B-409E8A1D91D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A9E41D5-3D9D-4130-968B-409E8A1D91D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD5B9D5-92D6-4961-87B8-041C6F8AF31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD5B9D5-92D6-4961-87B8-041C6F8AF31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD5B9D5-92D6-4961-87B8-041C6F8AF31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD5B9D5-92D6-4961-87B8-041C6F8AF31F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
