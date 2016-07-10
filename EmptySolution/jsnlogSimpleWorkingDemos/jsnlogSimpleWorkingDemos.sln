@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSNLogDemo_Log4Net_Configur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSNLogDemo_Log4Net_CORS", "JSNLogDemo_Log4Net_CORS\JSNLogDemo_Log4Net_CORS.csproj", "{C4C25EBC-C239-4044-9130-E099658D9FCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSNLogDemo_Log4Net_LoggingEventHandlers", "JSNLogDemo_Log4Net_LoggingEventHandlers\JSNLogDemo_Log4Net_LoggingEventHandlers.csproj", "{B0966D8C-BE1F-4FC9-9B1A-4813187698C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSNLogDemo_Log4Net_OWIN", "JSNLogDemo_Log4Net_OWIN\JSNLogDemo_Log4Net_OWIN.csproj", "{1527AAD2-98C5-4946-8D43-D57DA8D43292}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{C4C25EBC-C239-4044-9130-E099658D9FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4C25EBC-C239-4044-9130-E099658D9FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4C25EBC-C239-4044-9130-E099658D9FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0966D8C-BE1F-4FC9-9B1A-4813187698C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0966D8C-BE1F-4FC9-9B1A-4813187698C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0966D8C-BE1F-4FC9-9B1A-4813187698C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0966D8C-BE1F-4FC9-9B1A-4813187698C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1527AAD2-98C5-4946-8D43-D57DA8D43292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1527AAD2-98C5-4946-8D43-D57DA8D43292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1527AAD2-98C5-4946-8D43-D57DA8D43292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1527AAD2-98C5-4946-8D43-D57DA8D43292}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

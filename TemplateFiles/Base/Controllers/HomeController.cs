@@ -11,7 +11,7 @@ namespace {{{Project}}}.Controllers
         // GET: Home
         public ActionResult Index()
         {
-		{{{LoggingPackageSpecific}}}
+		{{{Home}}}
             return View();
         }
     }

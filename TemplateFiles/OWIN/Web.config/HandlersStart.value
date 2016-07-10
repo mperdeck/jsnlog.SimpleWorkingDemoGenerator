@@ -1,0 +1,9 @@
+﻿      <!--
+      Add these lines when using JSNLog as an OWIN Middleware Component 
+      If you configure JSNLog to send log request to a url that does NOT end in .logger, change the path attribute below.
+      -->
+      <remove name="LoggerHandler" />
+      <remove name="LoggerHandler-Classic" />
+      <add name="Owin" verb="" path="*.logger" type="Microsoft.Owin.Host.SystemWeb.OwinHttpHandler, Microsoft.Owin.Host.SystemWeb" />
+
+	  
