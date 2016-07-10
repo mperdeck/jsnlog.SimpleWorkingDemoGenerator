@@ -1,10 +1,10 @@
 ﻿
 // -----------------
 
-string logFilePath = Path.Combine(Path.GetTempPath(), "log.txt");
+string logFilePath = Server.MapPath("/Logs/log.txt");
 
 var log = new LoggerConfiguration()
-				.WriteTo.Sink(new FileSink(logFilePath, new RawFormatter(), null))
+				.WriteTo.File(logFilePath)
 				.MinimumLevel.Verbose()
 				.CreateLogger();
 
