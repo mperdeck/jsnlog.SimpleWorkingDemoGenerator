@@ -17,7 +17,12 @@
 	Log messages are sent to server the moment this page is opened.
 	</p>
 	
+	
+	{{{EndBody}}}
+	
     <script type="text/ecmascript">
+	
+	{{{StartScriptBlock}}}
 	
 	window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
 		// Send object with all data to server side log, using severity fatal, 

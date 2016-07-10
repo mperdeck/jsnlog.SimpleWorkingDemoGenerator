@@ -1,0 +1,16 @@
+﻿
+			// Use configuration in code instead of configuration in web.config/.
+
+            JavascriptLogging.SetJsnlogConfiguration(new JsnlogConfiguration
+            {
+                serverSideMessageFormat = "%logger, %level, %message",
+                productionLibraryPath = "~/Scripts/jsnlog.min.js",
+                loggers = new List<Logger>
+                {
+                    new Logger 
+                    {
+                        name = "jsLogger",
+                        level = "FATAL"
+                    }
+                }
+            });

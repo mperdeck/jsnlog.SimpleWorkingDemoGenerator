@@ -1,0 +1,7 @@
+﻿			// Configure CORS.
+
+            JavascriptLogging.SetJsnlogConfiguration(new JsnlogConfiguration
+            {
+				defaultAjaxUrl = "http://apicorslocalhost.local/jsnlog.logger",
+				corsAllowedOriginsRegex = "^https?:\/\/([a-z0-9]+[.])*corslocalhost[.]local$"
+            });

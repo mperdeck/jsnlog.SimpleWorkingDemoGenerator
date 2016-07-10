@@ -5,7 +5,12 @@
 
 foreach ($site in $Sites)
 {
-  InstallMainPackage $site.projectName $site.logPackage
+	InstallLoggingRelatedPackages $site.projectName $site.loggingPackage
+
+	foreach ($package in $site.packages)
+	{
+		InstallPackage $projectName $package
+	}
 }
 
 

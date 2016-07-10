@@ -15,7 +15,7 @@ Function InstallPackage([string] $projectName, [string] $packageId, [string] $so
 }
 
 # Installs the logging package and the JSNLog adapter package for the logging package
-Function InstallMainPackage([string] $projectName, [string] $logPackage)
+Function InstallLoggingRelatedPackages([string] $projectName, [string] $logPackage)
 {
 	InstallPackage $projectName $logPackage
 	InstallPackage $projectName "JSNLog.$logPackage" "C:\Dev\@NuGet\GeneratedPackages"
