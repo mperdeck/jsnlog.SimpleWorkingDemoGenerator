@@ -153,6 +153,9 @@ Function CopyFileToProject([string] $absoluteSourcePath, [string] $projectName, 
 		AddFileToCSProj $projectName $projectFileRelPath
 	}
 
+	# Create destination directory in case it doesn't exist
+	mkdir -force (Split-Path $absoluteProjectFilePath) | Out-Null
+
 	Copy-Item $absoluteSourcePath $absoluteProjectFilePath
 }
 
