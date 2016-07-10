@@ -9,7 +9,7 @@ foreach ($site in $Sites)
 
 	foreach ($package in $site.packages)
 	{
-		InstallPackage $projectName $package
+		InstallPackage $site.projectName $package
 	}
 }
 

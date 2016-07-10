@@ -252,7 +252,7 @@ Function RemoveMarkersFromFile([string] $path)
 	RemoveRegexInFile $regex $path
 }
 
-Function ReplaceProjectMarkersInFile([string] $path, [string] $projectName)
+Function ReplaceProjectMarkersInFile([string] $projectName, [string] $path)
 {
 	$content = [IO.File]::ReadAllText($path)
 	$newContent = $content.replace("{{{Project}}}", $projectName)
