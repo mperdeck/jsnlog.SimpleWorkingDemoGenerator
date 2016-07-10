@@ -81,15 +81,3 @@ In Package Manager Console, run:
 C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\InstallPackages.ps1
 
 
-
-
-
-
-
-
-
-
-
-
-
-
