@@ -9,8 +9,8 @@ Function StartServer([string] $jobName, [string] $sourcePath, [int] $port)
 {
 	Write-Host "Starting server $jobName, port $port, source: $sourcePath"
 
-    Start-Job -Name $jobName -Arg $sourcePath -ScriptBlock {
-        param ($sourcePath)
+    Start-Job -Name $jobName -Arg $sourcePath,$port -ScriptBlock {
+        param ($sourcePath, $port)
         & 'C:\Program Files (x86)\IIS Express\iisexpress.exe' /port:$port /path:$sourcePath
     }
 }
