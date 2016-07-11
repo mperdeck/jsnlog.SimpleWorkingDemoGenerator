@@ -7,6 +7,8 @@
 # $port - url will be localhost:<port>
 Function StartServer([string] $jobName, [string] $sourcePath, [int] $port)
 {
+	Write-Host "Starting server $jobName, port $port, source: $sourcePath"
+
     Start-Job -Name $jobName -Arg $sourcePath -ScriptBlock {
         param ($sourcePath)
         & 'C:\Program Files (x86)\IIS Express\iisexpress.exe' /port:$port /path:$sourcePath
@@ -31,6 +33,8 @@ Function SendGetRequest([int] $port)
 Function OpenUrlInBrowser([int] $port)
 {
 	$url = "http://localhost:$port"
+
+	Write-Host "opening $url"
 
 	$webDriverPath = "$PSScriptRoot\WebDriver\WebDriver.dll"
 	Add-Type -path $webDriverPath
