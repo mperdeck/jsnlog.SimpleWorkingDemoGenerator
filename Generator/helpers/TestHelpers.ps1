@@ -28,7 +28,7 @@ Function TestSite($site)
 # Runs integration tests against the created sites
 Function RunTests()
 {
-	BuildSolution $SolutionPath
+	BuildSolution $ProjectsRootDir
 
 	$port = 9000
 	foreach ($site in $Sites)
