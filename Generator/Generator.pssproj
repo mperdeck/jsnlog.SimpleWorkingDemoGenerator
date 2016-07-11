@@ -27,17 +27,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="helpers\Test.ps1" />
+    <Compile Include="helpers\TestHelpers.ps1" />
     <Compile Include="helpers\BuildHelpers.ps1" />
     <Compile Include="helpers\HttpHelpers.ps1" />
+    <Compile Include="helpers\WebDriver\Selenium.WebDriverBackedSelenium.dll" />
+    <Compile Include="helpers\WebDriver\Selenium.WebDriverBackedSelenium.pdb" />
+    <Compile Include="helpers\WebDriver\Selenium.WebDriverBackedSelenium.xml" />
+    <Compile Include="helpers\WebDriver\ThoughtWorks.Selenium.Core.dll" />
+    <Compile Include="helpers\WebDriver\ThoughtWorks.Selenium.Core.pdb" />
+    <Compile Include="helpers\WebDriver\ThoughtWorks.Selenium.Core.xml" />
+    <Compile Include="helpers\WebDriver\WebDriver.dll" />
+    <Compile Include="helpers\WebDriver\WebDriver.pdb" />
+    <Compile Include="helpers\WebDriver\WebDriver.Support.dll" />
+    <Compile Include="helpers\WebDriver\WebDriver.Support.pdb" />
+    <Compile Include="helpers\WebDriver\WebDriver.Support.xml" />
+    <Compile Include="helpers\WebDriver\WebDriver.xml" />
+    <Compile Include="InitSolution.bat" />
     <Compile Include="InstallPackages.ps1" />
     <Compile Include="helpers\FileHelpers.ps1" />
     <Compile Include="helpers\NugetHelpers.ps1" />
     <Compile Include="helpers\Sites.ps1" />
     <Compile Include="InitSolution.ps1" />
+    <Compile Include="Test.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="helpers\" />
+    <Folder Include="helpers\WebDriver\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />

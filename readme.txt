@@ -80,4 +80,8 @@ C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos.sln
 In Package Manager Console, run:
 C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\InstallPackages.ps1
 
+This installs all packages, and compiles and tests the projects.
+
+The compiling and testing can also be done separately with
+C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\Test.ps1
 

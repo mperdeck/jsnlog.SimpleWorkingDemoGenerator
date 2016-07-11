@@ -26,3 +26,23 @@ Function SendGetRequest([int] $port)
 	Invoke-WebRequest -Uri $url	-Method Get
 }
 
+
+# $port - GET will be sent to localhost:<port>
+Function OpenUrlInBrowser([int] $port)
+{
+	$url = "http://localhost:$port"
+
+	$webDriverPath = "$PSScriptRoot\WebDriver\WebDriver.dll"
+	Add-Type -path $webDriverPath
+
+	#initiate a driver
+	$script:driver = New-Object OpenQA.Selenium.Chrome.ChromeDriver
+
+	#browse to a website
+	$driver.Url = $url
+
+	#potential error message if element hasn't been loaded yet
+	$driver.Close()
+	$driver.Dispose()
+	$driver.Quit()
+}

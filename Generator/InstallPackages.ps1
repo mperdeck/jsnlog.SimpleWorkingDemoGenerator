@@ -1,4 +1,5 @@
 
+. "$PSScriptRoot\helpers\TestHelpers.ps1"
 . "$PSScriptRoot\helpers\FileHelpers.ps1"
 . "$PSScriptRoot\helpers\NugetHelpers.ps1"
 . "$PSScriptRoot\helpers\Sites.ps1"
@@ -17,5 +18,7 @@ foreach ($site in $Sites)
 		RemoveRegexesFromProjectWebConfig $site.projectName $removeRegex
 	}
 }
+
+RunTests
 
 
