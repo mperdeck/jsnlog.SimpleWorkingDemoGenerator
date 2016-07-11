@@ -27,6 +27,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="helpers\Test.ps1" />
+    <Compile Include="helpers\BuildHelpers.ps1" />
+    <Compile Include="helpers\HttpHelpers.ps1" />
     <Compile Include="InstallPackages.ps1" />
     <Compile Include="helpers\FileHelpers.ps1" />
     <Compile Include="helpers\NugetHelpers.ps1" />

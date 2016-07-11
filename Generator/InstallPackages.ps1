@@ -11,6 +11,11 @@ foreach ($site in $Sites)
 	{
 		InstallPackage $site.projectName $package
 	}
+
+	foreach ($removeRegex in $site.removeRegexes)
+	{
+		RemoveRegexesFromProjectWebConfig $site.projectName $removeRegex
+	}
 }
 
 

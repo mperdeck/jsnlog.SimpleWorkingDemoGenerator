@@ -298,3 +298,13 @@ Function ReplaceProjectMarkers([string] $projectName)
 		ForEach-Object { ReplaceProjectMarkersInFile $projectName $_.FullName }
 }
 
+# Remove all strings matching the given regex in the web.config in the given project.
+Function RemoveRegexesFromProjectWebConfig([string] $projectName, [string] $regex)
+{
+	$projectDir = ProjectDirPath $projectName
+
+	get-childitem $projectDir -File -recurse -force | `
+		?{($_.Name -eq "Web.config")} | `
+		ForEach-Object { RemoveRegexInFile $regex $_.FullName }
+}
+

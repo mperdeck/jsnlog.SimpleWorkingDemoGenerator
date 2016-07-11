@@ -4,7 +4,7 @@
   
   <nlog xmlns=" http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" throwExceptions="true" internalLogFile=" Nlog.txt">
     <targets>
-      <target name="file" xsi:type="File" layout="${longdate} ${threadid:padding=3} ${level:padding=-30} ${logger:padding=-30} ${message} ${exception:format=tostring}" fileName="${basedir}/logs/${shortdate}.txt" />
+      <target name="file" xsi:type="File" layout="${longdate} ${threadid:padding=3} ${level:padding=-30} ${logger:padding=-30} ${message} ${exception:format=tostring}" fileName="${basedir}/Logs/log.txt" />
     </targets>
     <rules>
       <logger name="*" minlevel="Trace" writeTo="file" />
