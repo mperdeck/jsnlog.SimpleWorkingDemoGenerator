@@ -6,5 +6,5 @@
 Function BuildSolution([string] $slnDir)
 {
 	Write-Host "Building $slnDir"
-	cmd /c "cd $slnDir; msbuild"
+	cmd /c "cd $slnDir & msbuild"
 }
