@@ -19,6 +19,8 @@ foreach ($site in $Sites)
 	}
 }
 
+Start-Sleep -s 10
+
 RunTests
 
 
