@@ -30,7 +30,7 @@ Function SendGetRequest([int] $port)
 
 
 # $port - GET will be sent to localhost:<port>
-Function OpenUrlInBrowser([int] $port)
+Function OpenLocalhostInBrowser([int] $port)
 {
 	$url = "http://localhost:$port"
 	OpenUrlInBrowser $url

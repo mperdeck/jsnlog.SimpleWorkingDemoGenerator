@@ -46,7 +46,7 @@ Function RunTests()
 	$port = 9000
 	foreach ($site in $Sites)
 	{
-		OpenUrlInBrowser $port
+		OpenLocalhostInBrowser $port
 		$port++
 	}
 

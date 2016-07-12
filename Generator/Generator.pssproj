@@ -27,7 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="helpers\KeysHelper.ps1" />
+    <Compile Include="helpers\KeysHelpers.ps1" />
     <Compile Include="helpers\TestHelpers.ps1" />
     <Compile Include="helpers\BuildHelpers.ps1" />
     <Compile Include="helpers\HttpHelpers.ps1" />
