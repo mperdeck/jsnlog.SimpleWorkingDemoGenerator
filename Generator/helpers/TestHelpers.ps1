@@ -11,16 +11,20 @@ Function TestSite($site)
 {
 	if ((-not $site.expectedStrings) -or ($site.expectedStrings.Length -eq 0)) { Return }
 
-	$logFilePath = ProjectFilePath $site.projectName "Logs/log.txt"
-	$logFileContents = [IO.File]::ReadAllText($logFilePath)
+	$projectName = $site.projectName
+	$logDirPath = ProjectFilePath $projectName "Logs"
 
-	Write-Host "----------- $site.projectName"
+	# Elmah writes each log entry to a separate file, while other packages write the log entries to one file.
+	# So just get all log content (from whatever file is in the Logs dir).
+	$logFilesContents = ContentAllFilesInDir $logDirPath
+
+	Write-Host "----------- $projectName"
 
 	foreach ($expectedString in $site.expectedStrings)
 	{
-		if (-not ($logFileContents -like "*$expectedString*"))
+		if (-not ($logFilesContents -like "*$expectedString*"))
 		{
-			Write-Host "$expectedString not found in $logFilePath"
+			Write-Host "$expectedString not found in $logDirPath"
 		}
 	}
 }

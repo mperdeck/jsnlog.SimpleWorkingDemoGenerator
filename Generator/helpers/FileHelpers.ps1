@@ -67,6 +67,19 @@ Function ToMarker([string] $markerName)
 	Return "{{{$markerName}}}"
 }
 
+# Reads the contents of all files in the given directory, concatenates all this contents
+# and returns the result.
+Function ContentAllFilesInDir([string] $dirPath)
+{
+	$content = ""
+
+	Get-ChildItem $dirPath -File | Foreach-Object { 
+		$content += [IO.File]::ReadAllText($_.FullName)
+	}
+
+	Return $content
+}
+
 # Inserts $value into a project file, right after the marker with the given name
 Function InsertValueInProjectFile([string] $value, [string] $markerName, [string] $projectName, [string] $projectFileRelPath)
 {
