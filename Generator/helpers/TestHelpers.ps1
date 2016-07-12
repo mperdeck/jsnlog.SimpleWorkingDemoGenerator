@@ -44,6 +44,9 @@ Function RunTests()
 	{
 		OpenUrlInBrowser $port
 		$port++
+
+		# Give the browser some time to load and run the JavaScript before opening another site
+		Start-Sleep -s 3
 	}
 
 	Start-Sleep -s 5
