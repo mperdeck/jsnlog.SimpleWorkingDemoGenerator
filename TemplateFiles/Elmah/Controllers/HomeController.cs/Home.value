@@ -1,1 +1,1 @@
-﻿            Elmah.ErrorSignal.FromCurrentContext().Raise(new Exception("Exception Message generated on server"));
+﻿            Elmah.ErrorSignal.FromCurrentContext().Raise(new Exception("info server log message"));

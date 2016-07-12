@@ -33,7 +33,11 @@ Function SendGetRequest([int] $port)
 Function OpenUrlInBrowser([int] $port)
 {
 	$url = "http://localhost:$port"
+	OpenUrlInBrowser $url
+}
 
+Function OpenUrlInBrowser([string] $url)
+{
 	Write-Host "opening $url"
 
 	$webDriverPath = "$PSScriptRoot\WebDriver\WebDriver.dll"
@@ -44,6 +48,9 @@ Function OpenUrlInBrowser([int] $port)
 
 	#browse to a website
 	$driver.Url = $url
+
+	# Give the browser some time to load and run the JavaScript before opening another site
+	Start-Sleep -s 2
 
 	#potential error message if element hasn't been loaded yet
 	$driver.Close()

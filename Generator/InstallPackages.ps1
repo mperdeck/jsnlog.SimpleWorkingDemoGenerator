@@ -3,6 +3,7 @@
 . "$PSScriptRoot\helpers\FileHelpers.ps1"
 . "$PSScriptRoot\helpers\NugetHelpers.ps1"
 . "$PSScriptRoot\helpers\Sites.ps1"
+. "$PSScriptRoot\helpers\KeysHelpers.ps1"
 
 foreach ($site in $Sites)
 {
@@ -20,6 +21,13 @@ foreach ($site in $Sites)
 }
 
 Start-Sleep -s 10
+
+# Send Cntrl+Shift+S key stroke to perform Save All in Visual Studio. This saves 
+# all the changes that have been made by installing the packages. See
+# https://technet.microsoft.com/en-us/library/ff731008.aspx
+# If you don't do this, any build will fail.
+
+SendKey "+^S"
 
 RunTests
 

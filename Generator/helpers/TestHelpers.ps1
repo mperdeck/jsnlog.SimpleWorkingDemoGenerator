@@ -24,7 +24,7 @@ Function TestSite($site)
 	{
 		if (-not ($logFilesContents -like "*$expectedString*"))
 		{
-			Write-Host "$expectedString not found in $logDirPath"
+			Write-Host "`"$expectedString`" not found in $logDirPath"
 		}
 	}
 }
@@ -48,12 +48,24 @@ Function RunTests()
 	{
 		OpenUrlInBrowser $port
 		$port++
-
-		# Give the browser some time to load and run the JavaScript before opening another site
-		Start-Sleep -s 7
 	}
 
-	Start-Sleep -s 5
+	# #############################
+	# CORS Site specific setup
+
+	#StopServer "JSNLogDemo_Log4Net_CORS"
+	#StartServer "JSNLogDemo_Log4Net_CORS" (ProjectDirPath "JSNLogDemo_Log4Net_CORS") $port
+
+	# Make sure that corslocalhost.local and apicorslocalhost.local have been set up in IIS,
+	# and point at the JSNLogDemo_Log4Net_CORS project directory.
+	# They also have to be added to the hosts file.
+
+	OpenUrlInBrowser "http://corslocalhost.local"
+
+	# #############################
+
+	# Serilog keeps the log file locked for a while
+	Start-Sleep -s 10
 
 	foreach ($site in $Sites)
 	{

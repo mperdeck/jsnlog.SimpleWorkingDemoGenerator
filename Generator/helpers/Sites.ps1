@@ -9,7 +9,6 @@
 
 $standardExpectedStrings = @(
 	"info server log message", `
-	"trace client log message", `
     "debug client log message", `
     "info client log message", `
     "warn client log message - logging object", `

@@ -4,7 +4,7 @@
 string logFilePath = Server.MapPath("/Logs/log.txt");
 
 var log = new LoggerConfiguration()
-				.WriteTo.File(logFilePath)
+				.WriteTo.File(logFilePath, buffered: false)
 				.MinimumLevel.Verbose()
 				.CreateLogger();
 
