@@ -107,16 +107,6 @@ Function EnsureDirectoryExists([string] $path)
 	New-Item -ItemType Directory -Force -Path $directory
 }
 
-# Writes the given content to a file in a site (represented by a project).
-# If the file exists, it is overwritten.
-# $siteFileRelPath is the relative path of the file, relative to the root of the project.
-Function UpdateSiteFile([string] $content, [string] $projectName, [string] $siteFileRelPath)
-{
-	$path = SiteFilePath $projectName $siteFileRelPath
-	EnsureDirectoryExists $path
-	$content | Out-File -encoding ascii $path
-}
-
 # Adds a file to the .csproj of a project
 # $siteFileRelPath is the relative path of the file, relative to the root of the project.
 Function AddFileToCSProj([string] $projectName, [string] $siteFileRelPath)
@@ -137,22 +127,6 @@ Function AddFileToCSProj([string] $projectName, [string] $siteFileRelPath)
 	$csProjNewContent = $csProjContent.replace($marker, "$marker$newEntry")
 
 	$csProjNewContent | Out-File -encoding ascii $csProjPath
-}
-
-# Writes the given content to a file in a site (represented by a project).
-# If the file exists, it is overwritten.
-# $siteFileRelPath is the relative path of the file, relative to the root of the project.
-#
-# If the file didn't already exist, it is added to the .csproj file as well.
-Function AddSiteFile([string] $content, [string] $projectName, [string] $siteFileRelPath)
-{
-	$path = SiteFilePath $projectName $siteFileRelPath
-	if (-not (Test-Path $path))
-	{
-		AddFileToCSProj $projectName $siteFileRelPath
-	}
-
-	UpdateSiteFile $content $projectName $siteFileRelPath
 }
 
 # Copies a file to a project within the jsnlogSimpleWorkingDemos site
@@ -198,33 +172,6 @@ Function RemoveRegexInFile([string] $regex, [string] $path)
 
 	$content | Out-File -encoding ascii $path
 }
-
-Function CopyMainFile([string] $projectName, [string] $logPackage, [string] $siteFileRelPath, [string] $siteFileRelPathUsing)
-{
-	$basePath = "Base\$siteFileRelPath"
-	$content = TemplateFileContents $basePath
-
-	$newContent = $content.replace("{{{Project}}}", $projectName)
-
-	$replacerTemplateFileRelPath = "$logPackage\$siteFileRelPath"
-	$newContent2 = ReplacePlaceholderByTemplateFile $newContent "{{LoggingPackageSpecific}}" $replacerTemplateFileRelPath
-
-	$replacerTemplateFileRelPathUsing = "$logPackage\$siteFileRelPathUsing"
-	$newContent3 = ReplacePlaceholderByTemplateFile $newContent2 "{{LoggingPackageSpecificUsing}}" $replacerTemplateFileRelPathUsing
-
-	AddSiteFile $newContent3 $projectName $siteFileRelPath
-}
-
-# Copies the HomeController, Home/index.cstml, Global.asax and Web.config files
-# Does replacements for the logPackage, etc.
-Function CopyMainFiles([string] $projectName, [string] $logPackage)
-{
-	CopyMainFile $projectName $logPackage "Views\Home\Index.cshtml"
-	CopyMainFile $projectName $logPackage "Global.asax.cs" "Global_Using.asax.cs"
-	CopyMainFile $projectName $logPackage "Controllers\HomeController.cs" "Controllers\HomeController_Using.cs"
-	CopyMainFile $projectName $logPackage "Web.config"
-}
-
 
 # $featureFilePath is the path to a file within the template directory.
 # This file will be copied to the given project.
