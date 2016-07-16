@@ -5,22 +5,6 @@
 . "$PSScriptRoot\helpers\Sites.ps1"
 . "$PSScriptRoot\helpers\KeysHelpers.ps1"
 
-
-
-
-#SendKey "+^S"
-
-# SendKey "^+s"
-#Exit
-
-
-
-
-
-
-
-
-
 foreach ($site in $Sites)
 {
 	InstallLoggingRelatedPackages $site.projectName $site.loggingPackage
@@ -36,7 +20,7 @@ foreach ($site in $Sites)
 	}
 }
 
-Start-Sleep -s 5
+Start-Sleep -s 10
 
 # Send Cntrl+Shift+S key stroke to perform Save All in Visual Studio. This saves 
 # all the changes that have been made by installing the packages. See
@@ -44,8 +28,6 @@ Start-Sleep -s 5
 # If you don't do this, any build will fail.
 
 SendKey "+^S"
-
-Start-Sleep -s 5
 
 RunTests
 
