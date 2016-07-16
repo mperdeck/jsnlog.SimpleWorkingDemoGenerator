@@ -1,0 +1,19 @@
+
+Do not create a test project that targets .Net 4.0. Here is why.
+
+JSNLog has a dependency on the package
+ <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+ 
+This package lets you use async/await in environments that do not have .Net 4.5 or higher installed.
+In projects that target .Net 4.0, it installs a number of references, such as System.Runtime.
+In projects that target .Net 4.5 or higher, that doesn't happen - because there assemblies such as System.Runtime are part of .Net itself (in the GAC).
+
+Problem is that if you install Microsoft.Bcl.Async in a project that targets 4.0, whilst running in an evnironment that has .net 4.5+, things get confused.
+It will throw an exception, because now System.Runtime is defined in 2 places - via Microsoft.Bcl.Async and in the framework itself.
+
+So the base issue is that Microsoft.Bcl.Async assumes that the target .net version of the project is the same as the .net version of the environment.
+
+This problem plays with all versions of JSNLog, including 2.17.0.
+
+
+
