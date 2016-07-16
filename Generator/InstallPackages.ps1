@@ -7,7 +7,10 @@
 
 foreach ($site in $Sites)
 {
-	InstallLoggingRelatedPackages $site.projectName $site.loggingPackage
+	if ($site.loggingPackage)
+	{
+		InstallLoggingRelatedPackages $site.projectName $site.loggingPackage
+	}
 
 	foreach ($package in $site.packages)
 	{

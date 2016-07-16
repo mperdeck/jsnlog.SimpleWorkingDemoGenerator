@@ -2,11 +2,11 @@
 # NugetHelpers.ps1
 #
 
-Function InstallPackage([string] $projectName, [string] $packageId, [string] $source)
+Function InstallPackage([string] $projectName, [string] $packageId)
 {
-	if ($source)
+	if ($packageId -match "jsnlog")
 	{
-		Install-Package $packageId -ProjectName $projectName -Source $source
+		Install-Package $packageId -ProjectName $projectName -Source "C:\Dev\@NuGet\GeneratedPackages"
 	}
 	else
 	{
@@ -18,7 +18,7 @@ Function InstallPackage([string] $projectName, [string] $packageId, [string] $so
 Function InstallLoggingRelatedPackages([string] $projectName, [string] $logPackage)
 {
 	InstallPackage $projectName $logPackage
-	InstallPackage $projectName "JSNLog.$logPackage" "C:\Dev\@NuGet\GeneratedPackages"
+	InstallPackage $projectName "JSNLog.$logPackage"
 }
 
 

@@ -35,7 +35,7 @@ $sites = @(
 	[pscustomobject]@{projectName="JSNLogDemo_Elmah"; loggingPackage="Elmah"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net"; loggingPackage="Log4Net"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_beforeSend"; loggingPackage="Log4Net"; features=@("beforeSend"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
-	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_ConfigurationInCode"; loggingPackage="Log4Net"; features=@("ConfigurationInCode"); packages=@(); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$fatalOnlyExpectedStrings },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_ConfigurationInCode"; features=@("Log4Net", "ConfigurationInCode"); packages=@("Log4Net", "JSNLog.CommonLogging", "Common.Logging.Log4Net1215"); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$fatalOnlyExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_CORS"; loggingPackage="Log4Net"; features=@("CORS"); packages=@(); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_LoggingEventHandlers"; loggingPackage="Log4Net"; features=@("LoggingEventHandlers"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_OWIN"; loggingPackage="Log4Net"; features=@("OWIN"); packages=@("Microsoft.Owin.Host.SystemWeb"); removeRegexes=@("<add name=`"LoggerHandler`".*?>", "<add name=`"LoggerHandler-Classic`".*?>"); expectedStrings=$standardExpectedStrings },

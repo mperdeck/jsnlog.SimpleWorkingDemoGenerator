@@ -20,7 +20,14 @@ CopyEmptySolution
 
 foreach ($site in $Sites)
 {
-	$features = @("Base", $site.loggingPackage) + $site.features
+	$features = @("Base")
+	if ($site.loggingPackage)
+	{
+		$features += $site.loggingPackage
+	}
+
+	$features += $site.features
+
 	foreach ($feature in $features)
 	{
 		ApplyFeatureToProject $site.projectName $feature
