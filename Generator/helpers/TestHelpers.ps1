@@ -27,6 +27,16 @@ Function TestSite($site)
 			Write-Host "`"$expectedString`" not found in $logDirPath"
 		}
 	}
+
+	if ((-not $site.notexpectedStrings) -or ($site.notexpectedStrings.Length -eq 0)) { Return }
+
+	foreach ($notexpectedString in $site.notexpectedStrings)
+	{
+		if (-not ($logFilesContents -like "*$notexpectedString*"))
+		{
+			Write-Host "`"$notexpectedString`" found in $logDirPath"
+		}
+	}
 }
 
 # Runs integration tests against the created sites
