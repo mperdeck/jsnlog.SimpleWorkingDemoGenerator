@@ -32,7 +32,7 @@ Function TestSite($site)
 
 	foreach ($notexpectedString in $site.notexpectedStrings)
 	{
-		if (-not ($logFilesContents -like "*$notexpectedString*"))
+		if ($logFilesContents -like "*$notexpectedString*")
 		{
 			Write-Host "`"$notexpectedString`" found in $logDirPath"
 		}
