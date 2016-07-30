@@ -8,6 +8,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>{{{Project}}}</title>
+	{{{BeforeConfigure}}}
    @Html.Raw(JSNLog.JavascriptLogging.Configure())
 </head>
 <body>
@@ -24,19 +25,6 @@
 	
 	{{{StartScriptBlock}}}
 	
-	window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
-		// Send object with all data to server side log, using severity fatal, 
-		// from logger "onerrorLogger"
-		JL("onerrorLogger").fatalException({
-			"msg": "Exception!", 
-			"errorMsg": errorMsg, "url": url, 
-			"line number": lineNumber, "column": column
-		}, errorObj);
-			
-		// Tell browser to run its own error handler as well   
-		return false;
-	}
-
 	// Log with every severity
     JL("jsLogger").debug("debug client log message");
     JL("jsLogger").info("info client log message");

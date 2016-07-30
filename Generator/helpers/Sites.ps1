@@ -7,7 +7,7 @@
 # removeRegexes has zero or more regexes. After package installation, any string in web.config that matches any of these regexes is removed.
 # expectedStrings - all the strings that are expected to be in the log file after a GET request to the file. If empty or non existent, the site does not write a log file (eg. it writes to MongoDb).
 
-$standardExpectedStrings = @(
+$standardExpectedStringsWithoutOnError = @(
 	"info server log message", `
     "debug client log message", `
     "info client log message", `
@@ -16,9 +16,10 @@ $standardExpectedStrings = @(
     "fatal client log message", `
 	 "Exception!", `
 	 "Something went wrong!", `
-	 "xyz is not defined", `
-	 "xyz2 is not defined"
+	 "xyz is not defined"
 )
+
+$standardExpectedStrings = $standardExpectedStringsWithoutOnError + @("xyz2 is not defined")
 
 $fatalOnlyExpectedStrings = @(
 	"info server log message", `
@@ -43,5 +44,8 @@ $sites = @(
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_LoggingEventHandlers"; loggingPackage="Log4Net"; features=@("LoggingEventHandlers"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_OWIN"; loggingPackage="Log4Net"; features=@("OWIN"); packages=@("Microsoft.Owin.Host.SystemWeb"); removeRegexes=@("<add name=`"LoggerHandler`".*?>", "<add name=`"LoggerHandler-Classic`".*?>"); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_RequestIds"; loggingPackage="Log4Net"; features=@("RequestIds"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_RequestIds"; loggingPackage="Log4Net"; features=@("RequestIds"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_NoOnErrorHandler"; loggingPackage="Log4Net"; features=@("NoOnErrorHandler"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutOnError },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_CustomOnErrorHandler"; loggingPackage="Log4Net"; features=@("CustomOnErrorHandler"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_NLog"; loggingPackage="NLog"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings }
 )

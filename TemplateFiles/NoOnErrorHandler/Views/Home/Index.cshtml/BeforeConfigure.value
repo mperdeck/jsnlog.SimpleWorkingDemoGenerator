@@ -1,0 +1,6 @@
+    <script type="text/ecmascript">
+		// Create dummy onerror handler, to stop JSNLog from setting an onerror handler itself.
+		window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
+			return false;
+		}
+    </script>
