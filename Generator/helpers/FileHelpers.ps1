@@ -245,7 +245,7 @@ Function RemoveMarkersFromProject([string] $projectName)
 	$projectDir = ProjectDirPath $projectName
 
 	get-childitem $projectDir -File -recurse -force | `
-		?{($_.extension -eq ".cs") -or ($_.extension -eq ".cshtml") -or ($_.extension -eq ".config")} | `
+		?{($_.extension -eq ".cs") -or ($_.extension -eq ".cshtml") -or ($_.extension -eq ".config") -or ($_.extension -eq ".js")} | `
 		ForEach-Object { RemoveMarkersFromFile $_.FullName }
 }
 	
