@@ -1,0 +1,1 @@
+JL("jsLogger").fatal("fatal client log message - this will be suppressed by logging event handler");

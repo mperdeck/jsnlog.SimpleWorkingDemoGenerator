@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width" />
     <title>{{{Project}}}</title>
 	{{{BeforeConfigure}}}
-   @Html.Raw(JSNLog.JavascriptLogging.Configure())
+    @Html.Raw(JSNLog.JavascriptLogging.Configure())
+	{{{AfterConfigure}}}
+    <script src="~/scripts/jsnlogdemo.js"></script>
 </head>
 <body>
     <h1>{{{Project}}}</h1>
@@ -17,35 +19,16 @@
 	<p>
 	Log messages are sent to server the moment this page is opened.
 	</p>
-	
+	<p>
+	The code generating the log messages is in scripts/jsnlogdemo.js.
+	</p>
+	<p>
+	JSNLog sets the <i>window.onerror</i> handler when it loads, so uncaught JavaScript exceptions are sent to your server side log.
+	However, it will only do that if <i>window.onerror</i> has already been set. That way, if you are setting your own onerror handler, it won't override that.  
+	</p>
 	
 	{{{EndBody}}}
-	
-    <script type="text/ecmascript">
-	
-	{{{StartScriptBlock}}}
-	
-	// Log with every severity
-    JL("jsLogger").debug("debug client log message");
-    JL("jsLogger").info("info client log message");
-    JL("jsLogger").warn({ msg: 'warn client log message - logging object', x: 5, y: 88 });
-    JL("jsLogger").error(function() { return "error client log message - returned by function"; });
-    JL("jsLogger").fatal("fatal client log message");
-
-	// Log caught exception
-	try {
-		// ReferenceError: xyz is not defined
-		xyz;
-	} catch (e) {
-		// Log the exception
-		JL().fatalException("Something went wrong!", e);
-	}
-	
-	// ReferenceError: xyz2 is not defined. Should be caught by onerror handler.
-	xyz2;
-	
-    </script>
-        
+	        
     <div>
     </div>
 </body>

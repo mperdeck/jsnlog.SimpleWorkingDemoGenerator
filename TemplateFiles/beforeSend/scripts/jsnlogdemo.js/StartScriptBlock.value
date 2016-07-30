@@ -2,7 +2,7 @@
       // -----------------------
       // beforeSend example
       //
-      // Shows a number of things you can do with a by setting the beforeSend option
+      // Shows a number of things you can do by setting the beforeSend option
       // to a function.
 
     var beforeSendExample = function (xhr, json) {
