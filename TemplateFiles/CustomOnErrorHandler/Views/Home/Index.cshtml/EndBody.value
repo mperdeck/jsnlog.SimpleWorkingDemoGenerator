@@ -1,0 +1,6 @@
+<p>
+In this example site, logging of uncaught exception is suppressed by setting the 
+<i>window.onerror</i> handler to a function that does nothing. 
+JSNLog sees that <i>window.onerror</i> has been set and so leaves it alone. 
+</p>
+

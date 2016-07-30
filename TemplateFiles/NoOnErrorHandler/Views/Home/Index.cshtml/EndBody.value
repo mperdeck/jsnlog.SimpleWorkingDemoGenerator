@@ -1,0 +1,4 @@
+<p>
+This example site overrides the <i>window.onerror</i> handler set by JSNLog with the site's own handler. It does this in file scripts/jsnlogdemo.js.
+</p>
+

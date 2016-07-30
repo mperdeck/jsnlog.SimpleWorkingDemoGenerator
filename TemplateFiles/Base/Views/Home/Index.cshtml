@@ -24,7 +24,8 @@
 	</p>
 	<p>
 	JSNLog sets the <i>window.onerror</i> handler when it loads, so uncaught JavaScript exceptions are sent to your server side log.
-	However, it will only do that if <i>window.onerror</i> has already been set. That way, if you are setting your own onerror handler, it won't override that.  
+	However, it will only do that if <i>window.onerror</i> has not already been set 
+	(<a href="http://jsnlog.com/Documentation/HowTo/ExceptionLogging">details</a>). That way, if you are setting your own onerror handler, it won't override that.  
 	</p>
 	
 	{{{EndBody}}}
