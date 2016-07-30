@@ -15,7 +15,6 @@ $standardExpectedStringsWithoutOnError = @(
     "warn client log message - logging object", `
     "error client log message - returned by function", `
     "fatal client log message", `
-	 "Uncaught Exception", `
 	 "Something went wrong!", `
 	 "xyz is not defined"
 )
