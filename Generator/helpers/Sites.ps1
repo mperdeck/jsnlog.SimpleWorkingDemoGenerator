@@ -15,7 +15,7 @@ $standardExpectedStringsWithoutOnError = @(
     "warn client log message - logging object", `
     "error client log message - returned by function", `
     "fatal client log message", `
-	 "Exception", `
+	 "Uncaught Exception", `
 	 "Something went wrong!", `
 	 "xyz is not defined"
 )
@@ -25,7 +25,7 @@ $standardExpectedStrings = $standardExpectedStringsWithoutOnError + @("xyz2 is n
 $fatalOnlyExpectedStrings = @(
 	"info server log message", `
     "fatal client log message", `
-	 "Exception", `
+	 "Uncaught Exception", `
 	 "Something went wrong!", `
 	 "xyz is not defined", `
 	 "xyz2 is not defined"
@@ -46,6 +46,6 @@ $sites = @(
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_OWIN"; loggingPackage="Log4Net"; features=@("OWIN"); packages=@("Microsoft.Owin.Host.SystemWeb"); removeRegexes=@("<add name=`"LoggerHandler`".*?>", "<add name=`"LoggerHandler-Classic`".*?>"); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_RequestIds"; loggingPackage="Log4Net"; features=@("RequestIds"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_NoOnErrorHandler"; loggingPackage="Log4Net"; features=@("NoOnErrorHandler"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutOnError; notexpectedStrings=@("xyz2") },
-	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_CustomOnErrorHandler"; loggingPackage="Log4Net"; features=@("CustomOnErrorHandler"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_CustomOnErrorHandler"; loggingPackage="Log4Net"; features=@("CustomOnErrorHandler"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings + $("Custom message") },
 	[pscustomobject]@{projectName="JSNLogDemo_NLog"; loggingPackage="NLog"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings }
 )
