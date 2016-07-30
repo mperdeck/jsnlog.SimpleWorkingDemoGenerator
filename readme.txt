@@ -74,7 +74,7 @@ C:\Dev\@NuGet\GeneratedPackages
 C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\InitSolution.bat
 
 This also opens VS with the demos solution.
-C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos.sln
+C:\Dev\JSNLog\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos\jsnlogSimpleWorkingDemos.sln
 
 2)
 In Package Manager Console, run:
