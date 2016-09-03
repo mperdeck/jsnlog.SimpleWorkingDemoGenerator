@@ -36,7 +36,7 @@ $sites = @(
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net"; loggingPackage="Log4Net"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	
 	# Note that here we test beforeSend, X-FORWARD-FOR header and Configure In Code (the last is needed to get JSNLog to log the IP addresses of the sender)
-	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_beforeSend"; loggingPackage="Log4Net"; features=@("beforeSend", "ConfigurationInCode"); packages=@(); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$standardExpectedStrings + @("99.88.77.66") },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_beforeSend"; loggingPackage="Log4Net"; features=@("beforeSend", "ConfigurationInCode"); packages=@(); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$fatalOnlyExpectedStrings + @("99.88.77.66") },
 
 	# Note that for this site we test JSNLog.CommonLogging package
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_ConfigurationInCode"; features=@("Log4Net", "CommonLoggingLog4Net", "ConfigurationInCode"); packages=@("Log4Net", "JSNLog.CommonLogging", "Common.Logging.Log4Net1215"); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$fatalOnlyExpectedStrings },
