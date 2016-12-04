@@ -64,6 +64,9 @@ MVC
 
 Save All to save the solution file, and the new project.
 
+Configure your new project in 
+C:\Dev\JSNLog\jsnlog.SimpleWorkingDemoGenerator\Generator\helpers\Sites.ps1
+
 =================================
 To regenerate the demos repo
 

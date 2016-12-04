@@ -1,0 +1,43 @@
+
+<h2>Demo on the serialize option and logging object with cyclic structures</h2>
+
+<p>
+	This project shows how to log objects that have cyclic structures. That is, they somehow refer to themselves.
+</p>
+
+<p>
+	It does this by:
+</p>
+
+<ul>
+	<li>
+		Importing file 
+		<a href="https://github.com/douglascrockford/JSON-js/blob/master/cycle.js" target="_blank">cycle.js</a>, 
+		which has a method decycle that replaces cycling structures with a meaningful string.
+	</li>
+	<li>
+		Using the 
+		serialize
+		option to set a custom method to process objects into strings. That custom method uses the decycle method to deal with cyclic objects.
+	</li>
+</ul>
+
+<p>
+	Do a View Source on this page to see this in action. The code that sets the serialize option is in file jsnlogdemo.js.
+</p>
+
+<script>
+	// Log simple cyclic object
+	var a = { x: 1 };
+	a.c = a;
+	JL().error(a);
+
+    // Log cyclic object where 2 objects make up the cycle
+	var a2 = { x: 1 };
+	var b2 = { y: 2 };
+	b2.d = { e: a2 };
+	a2.c = { b: b2 };
+	JL().error(a2);
+</script>
+
+	
