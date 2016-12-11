@@ -34,6 +34,10 @@ $decycleExpectedStrings = @(
     '{"x":1,"c":{"b":{"y":2,"d":{"e":{"$ref":"$"}}}}}'
 )
 
+$unhandledRejectionExpectedStrings = @(
+    'Exception thrown in promise'
+)
+
 $sites = @(
 	[pscustomobject]@{projectName="JSNLogDemo_Serilog"; loggingPackage="Serilog"; features=@("SerilogTextSink"); packages=@("Serilog.Sinks.File"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Serilog_MongoDB"; loggingPackage="Serilog"; features=@("SerilogMongoDBSink"); packages=@("Serilog.Sinks.MongoDB"); removeRegexes=@() },
@@ -51,6 +55,7 @@ $sites = @(
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_OWIN"; loggingPackage="Log4Net"; features=@("OWIN"); packages=@("Microsoft.Owin.Host.SystemWeb"); removeRegexes=@("<add name=`"LoggerHandler`".*?>", "<add name=`"LoggerHandler-Classic`".*?>"); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_RequestIds"; loggingPackage="Log4Net"; features=@("RequestIds"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_Decycle"; loggingPackage="Log4Net"; features=@("Decycle"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings+$decycleExpectedStrings },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_UnhandledRejection"; loggingPackage="Log4Net"; features=@("UnhandledRejection"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings+$unhandledRejectionExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_NoOnErrorHandler"; loggingPackage="Log4Net"; features=@("NoOnErrorHandler"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutOnError; notexpectedStrings=@("xyz2") },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_CustomOnErrorHandler"; loggingPackage="Log4Net"; features=@("CustomOnErrorHandler"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutOnError + $("Custom message") },
 	[pscustomobject]@{projectName="JSNLogDemo_NLog"; loggingPackage="NLog"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings }
