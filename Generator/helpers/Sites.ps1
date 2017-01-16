@@ -48,7 +48,7 @@ $sites = @(
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_beforeSend"; loggingPackage="Log4Net"; features=@("beforeSend", "ConfigurationInCode"); packages=@(); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$fatalOnlyExpectedStrings + @("99.88.77.66") },
 
 	# Note that for this site we test JSNLog.CommonLogging package
-	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_ConfigurationInCode"; features=@("Log4Net", "CommonLoggingLog4Net", "ConfigurationInCode"); packages=@("Log4Net", "JSNLog.CommonLogging", "Common.Logging.Log4Net1215"); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$fatalOnlyExpectedStrings },
+	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_ConfigurationInCode"; features=@("Log4Net", "CommonLoggingLog4Net", "ConfigurationInCode"); packages=@("Log4Net", "JSNLog.CommonLogging", "Common.Logging.Log4Net.Universal"); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$fatalOnlyExpectedStrings },
 	
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_CORS"; loggingPackage="Log4Net"; features=@("CORS"); packages=@(); removeRegexes=@("<jsnlog.*?>", "</jsnlog>"); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Log4Net_LoggingEventHandlers"; loggingPackage="Log4Net"; features=@("LoggingEventHandlers"); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings; notexpectedStrings=@("fatal client log message - this will be suppressed by logging event handler") },
