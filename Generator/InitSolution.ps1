@@ -20,7 +20,15 @@ CopyEmptySolution
 
 foreach ($site in $Sites)
 {
-	$features = @("Base")
+	$base = "Base"
+
+	if ($site.base)
+	{
+		$base = $site.base
+	}
+
+	$features = @($base)
+	
 	if ($site.loggingPackage)
 	{
 		$features += $site.loggingPackage
