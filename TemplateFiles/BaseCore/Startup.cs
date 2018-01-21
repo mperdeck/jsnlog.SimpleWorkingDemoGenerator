@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-{{{Using}}}
+using JSNLog;
+using Microsoft.Extensions.Logging;
 
 namespace {{{Project}}}
 {
@@ -27,9 +28,11 @@ namespace {{{Project}}}
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env{{{ConfigureParameter}}})
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-			{{{ConfigureTop}}}
+			// Configure the server side logging package Serilog to write to a file.
+            // JSNLog is not aware what server side logging package you use, so you can use any package you like or none at all.
+            loggerFactory.AddFile("Logs/log.txt");
 			
             if (env.IsDevelopment())
             {
@@ -41,7 +44,13 @@ namespace {{{Project}}}
                 app.UseExceptionHandler("/Home/Error");
             }
 
-			{{{ConfigureAboveUseStaticFiles}}}
+            // Configure JSNLog
+			// Do this before calling UseStaticFiles.
+			//
+            // You can initialize jsnlogConfiguration in code, or from configuration, such as from an appsettings.json file.
+			// If you do not change this code, you get the default configuration, which will work fine.
+            var jsnlogConfiguration = new JsnlogConfiguration();
+            app.UseJSNLog(new LoggingAdapter(loggerFactory), jsnlogConfiguration);
 			
             app.UseStaticFiles();
 
