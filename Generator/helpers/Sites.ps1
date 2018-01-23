@@ -39,8 +39,8 @@ $unhandledRejectionExpectedStrings = @(
 )
 
 $sites = @(
-	[pscustomobject]@{base="BaseCore"; projectName="JSNLogDemo_Core_Net4x"; features=@("Net4x"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
-	[pscustomobject]@{base="BaseCore"; projectName="JSNLogDemo_Core_NetCoreApp2"; features=@("NetCoreApp2"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
+	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_Net4x"; features=@("Net4x"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
+	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_NetCoreApp2"; features=@("NetCoreApp2"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Serilog"; loggingPackage="Serilog"; features=@("SerilogTextSink"); packages=@("Serilog.Sinks.File"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Serilog_MongoDB"; loggingPackage="Serilog"; features=@("SerilogMongoDBSink"); packages=@("Serilog.Sinks.MongoDB"); removeRegexes=@() },
 	[pscustomobject]@{projectName="JSNLogDemo_Elmah"; loggingPackage="Elmah"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },

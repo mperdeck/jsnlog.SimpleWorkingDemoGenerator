@@ -47,7 +47,7 @@ Function RunTests()
 	$port = 9000
 	foreach ($site in $Sites)
 	{
-		StartServer $site.projectName (ProjectDirPath $site.projectName) $port
+		StartServer $site.projectName $site.isCore (ProjectDirPath $site.projectName) $port
 		$port++
 	}
 

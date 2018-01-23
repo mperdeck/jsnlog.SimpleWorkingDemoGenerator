@@ -5,14 +5,30 @@
 # $jobName - name for the job that runs the server
 # $sourcePath - directory where the site's web.config is located
 # $port - url will be localhost:<port>
-Function StartServer([string] $jobName, [string] $sourcePath, [int] $port)
+Function StartServer([string] $jobName, [bool] $isCore, [string] $sourcePath, [int] $port)
 {
 	Write-Host "Starting server $jobName, port $port, source: $sourcePath"
 
-    Start-Job -Name $jobName -Arg $sourcePath,$port -ScriptBlock {
-        param ($sourcePath, $port)
-        & 'C:\Program Files (x86)\IIS Express\iisexpress.exe' /port:$port /path:$sourcePath
-    }
+	if ($isCore)
+	{
+		$launchSettingsPath = $sourcePath + "\\Properties\\launchSettings.json"
+		$launchSettingsContent = [System.IO.File]::ReadAllText($launchSettingsPath)
+		$launchSettingsContent = $launchSettingsContent.Replace("__PORT__", $port.ToString())
+		[System.IO.File]::WriteAllText($launchSettingsPath, $launchSettingsContent)
+	
+		Start-Job -Name $jobName -Arg $sourcePath,$port -ScriptBlock {
+			param ($sourcePath, $port)
+			& cd $sourcePath
+			& dotnet run
+		}
+	}
+	else
+	{
+		Start-Job -Name $jobName -Arg $sourcePath,$port -ScriptBlock {
+			param ($sourcePath, $port)
+			& 'C:\Program Files (x86)\IIS Express\iisexpress.exe' /port:$port /path:$sourcePath
+		}
+	}
 }
 
 Function StopServer([string] $jobName)
