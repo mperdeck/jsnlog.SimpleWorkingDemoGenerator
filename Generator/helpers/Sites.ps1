@@ -8,9 +8,8 @@
 # expectedStrings - all the strings that are expected to be in the log file after a GET request to the file. If empty or non existent, the site does not write a log file (eg. it writes to MongoDb).
 # notexpectedStrings - all the strings that are expected to be not in the log file after a GET request to the file. If empty or non existent, this is not checked.
 
-$standardExpectedStringsWithoutOnError = @(
+$standardExpectedStringsWithoutOnErrorWithoutDebug = @(
 	"info server log message", `
-    "debug client log message", `
     "info client log message", `
     "warn client log message - logging object", `
     "error client log message - returned by function", `
@@ -19,7 +18,13 @@ $standardExpectedStringsWithoutOnError = @(
 	 "xyz is not defined"
 )
 
-$standardExpectedStrings = $standardExpectedStringsWithoutOnError + @("Uncaught Exception", "xyz2 is not defined")
+$xyz2NotDefinedMessages = @("Uncaught Exception", "xyz2 is not defined")
+
+$standardExpectedStringsWithoutOnError = $standardExpectedStringsWithoutOnErrorWithoutDebug + @("info server log message")
+
+$standardExpectedStrings = $standardExpectedStringsWithoutOnError + $xyz2NotDefinedMessages
+
+$standardExpectedStringsWithoutDebug = $standardExpectedStringsWithoutOnErrorWithoutDebug + $xyz2NotDefinedMessages
 
 $fatalOnlyExpectedStrings = @(
 	"info server log message", `
@@ -38,9 +43,11 @@ $unhandledRejectionExpectedStrings = @(
     'Exception thrown in promise'
 )
 
+# For Core sites do not check for the "debug" log message, because the default level for such sites is Information.
+
 $sites = @(
-	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_Net4x"; features=@("Net4x"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
-	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_NetCoreApp2"; features=@("NetCoreApp2"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
+	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_Net4x"; features=@("Net4x"); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutDebug },
+	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_NetCoreApp2"; features=@("NetCoreApp2"); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutDebug },
 	[pscustomobject]@{projectName="JSNLogDemo_Serilog"; loggingPackage="Serilog"; features=@("SerilogTextSink"); packages=@("Serilog.Sinks.File"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Serilog_MongoDB"; loggingPackage="Serilog"; features=@("SerilogMongoDBSink"); packages=@("Serilog.Sinks.MongoDB"); removeRegexes=@() },
 	[pscustomobject]@{projectName="JSNLogDemo_Elmah"; loggingPackage="Elmah"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
