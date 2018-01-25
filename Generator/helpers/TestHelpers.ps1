@@ -47,7 +47,13 @@ Function RunTests()
 	$port = 9000
 	foreach ($site in $Sites)
 	{
-		StartServer $site.projectName $site.isCore (ProjectDirPath $site.projectName) $port
+		$isCore = $false
+		if (-not ([string]::IsNullOrEmpty($site.isCore)))
+		{
+			$isCore = $site.isCore
+		}
+	
+		StartServer $site.projectName $isCore (ProjectDirPath $site.projectName) $port
 		$port++
 	}
 
