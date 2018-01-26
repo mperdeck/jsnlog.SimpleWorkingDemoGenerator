@@ -18,6 +18,9 @@
 	(<a href="http://jsnlog.com/Documentation/HowTo/ExceptionLogging">details</a>). That way, if you are setting your own onerror handler, it won't override that.  
 	</p>
     </div>
+
+    <jl-javascript-logger-definitions/>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsnlog/__Version__/jsnlog.min.js"></script>
     <script src="~/js/jsnlogdemo.js"></script>
 </body>

@@ -49,9 +49,17 @@ namespace {{{Project}}}
             // Configure JSNLog
 			// Do this before calling UseStaticFiles.
 			//
-            // You can initialize jsnlogConfiguration in code, or from configuration, such as from an appsettings.json file.
-			// If you do not change this code, you get the default configuration, which will work fine.
-            var jsnlogConfiguration = new JsnlogConfiguration();
+            // You can initialize jsnlogConfiguration in code as shown here, or from configuration, such as from an appsettings.json file.
+			// If you use the default JsnlogConfiguration object (without setting any properties), you get the default configuration, which will work fine.
+			// For a description of the properties, see
+			// http://jsnlog.com/Documentation/Configuration/JSNLog
+			// http://jsnlog.com/Documentation/Configuration/JSNLog/AjaxAppender
+			// http://jsnlog.com/Documentation/Configuration/JSNLog/Logger
+			
+            var jsnlogConfiguration = new JsnlogConfiguration()
+            {
+                maxMessages = 5
+            };
             app.UseJSNLog(new LoggingAdapter(loggerFactory), jsnlogConfiguration);
 			
             app.UseStaticFiles();
