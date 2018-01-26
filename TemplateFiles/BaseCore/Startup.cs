@@ -58,7 +58,7 @@ namespace {{{Project}}}
 			
             var jsnlogConfiguration = new JsnlogConfiguration()
             {
-                maxMessages = 5
+                maxMessages = 50
             };
             app.UseJSNLog(new LoggingAdapter(loggerFactory), jsnlogConfiguration);
 			
