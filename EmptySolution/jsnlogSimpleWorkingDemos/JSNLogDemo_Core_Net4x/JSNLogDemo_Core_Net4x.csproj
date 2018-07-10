@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JSNLog.AspNetCore" Version="2.*" />
+    <PackageReference Include="JSNLog" Version="2.*" />
 	
 	<!-- Used to write log entries to a file on the server. Not required for JSNLog. You any server side logging solution you want. -->
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.*" />
