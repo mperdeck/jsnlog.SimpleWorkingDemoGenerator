@@ -46,8 +46,9 @@ $unhandledRejectionExpectedStrings = @(
 # For Core sites do not check for the "debug" log message, because the default level for such sites is Information.
 
 $sites = @(
-	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_Net4x"; features=@("Net4x"); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutDebug },
-	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_NetCoreApp2"; features=@("NetCoreApp2"); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutDebug },
+	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_Net4x"; features=@("Net4x","SerilogCore"); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutDebug },
+	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_Core_NetCoreApp2"; features=@("NetCoreApp2","SerilogCore"); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutDebug },
+	[pscustomobject]@{base="BaseCore"; isCore=$true; projectName="JSNLogDemo_NLog_NetCoreRequestId"; features=@("NetCoreApp2","NLogCore"); removeRegexes=@(); expectedStrings=$standardExpectedStringsWithoutDebug },
 	[pscustomobject]@{projectName="JSNLogDemo_Serilog"; loggingPackage="Serilog"; features=@("SerilogTextSink"); packages=@("Serilog.Sinks.File"); removeRegexes=@(); expectedStrings=$standardExpectedStrings },
 	[pscustomobject]@{projectName="JSNLogDemo_Serilog_MongoDB"; loggingPackage="Serilog"; features=@("SerilogMongoDBSink"); packages=@("Serilog.Sinks.MongoDB"); removeRegexes=@() },
 	[pscustomobject]@{projectName="JSNLogDemo_Elmah"; loggingPackage="Elmah"; features=@(); packages=@(); removeRegexes=@(); expectedStrings=$standardExpectedStrings },

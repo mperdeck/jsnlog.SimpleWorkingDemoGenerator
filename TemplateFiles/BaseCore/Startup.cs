@@ -30,11 +30,7 @@ namespace {{{Project}}}
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-			// Configure the server side logging package Serilog to write to a file.
-            // JSNLog is not aware what server side logging package you use, so you can use any package you like or none at all.
-			//
-			// Note that the default level of .Net Core loggers is Information, so Trace and Debug messages are not logged.
-            loggerFactory.AddFile("Logs/log.txt");
+{{{ConfigureStart}}}
 			
             if (env.IsDevelopment())
             {
